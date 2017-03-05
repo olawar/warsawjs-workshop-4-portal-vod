@@ -17,7 +17,7 @@ export class MediaService {
   }
 
   public Videos():VIDEO[]{
-    if(this.user) {
+    if(this.user && this.userVideos) {
       return JSON.parse(localStorage.getItem('userVideos'));
     } else {
       return VIDEOS;

@@ -33,7 +33,7 @@ export class VideoNewComponent implements OnInit {
   }
 
   private addVideo(e) {
-    this.is_free = false;
+    this.is_free = true;
     this.populary = 0;
     this.addedVideo = new VIDEO(this.title, this.desc, this.cat, this.is_free, this.populary, this.id, this.img);
     this.sendVideo(this.addedVideo);
