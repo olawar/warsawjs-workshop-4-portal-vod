@@ -1,0 +1,43 @@
+<div class="jumbotron" style="margin-top: 40px; padding-bottom: 360px">
+  <p>Dodawanie filmu</p>
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-md-10">
+      
+      <form class="row" id="add-video" (submit)="addVideo($event.target)">
+        
+        <div class="form-group col-sm-12 notNullable">
+          <label for="title">Tytuł</label>
+          <input id="title" type="text" class="form-control" name="title" placeholder="Tytuł" required [(ngModel)]="title">
+        </div>
+        
+        <div class="form-group col-sm-12 notNullable">
+          <label for="desc">Opis</label>
+          <input id="desc" type="text" class="form-control" name="desc" placeholder="Opis" required [(ngModel)]="desc">
+        </div>
+  
+        <div class="form-group col-sm-12 notNullable">
+          <label for="category">Kategoria</label>
+          <select id="category"  class="form-control" name="desc" required [(ngModel)]="cat">
+            <option *ngFor="let cat of categories" style="cursor: default" value="{{ cat.id }}">{{ cat.name }}</option>
+          </select>
+        </div>
+        
+        <div class="form-group col-sm-12 notNullable">
+          <label for="source">Źródło</label>
+          <input id="source" type="text" class="form-control" name="source" placeholder="Źródło" required [(ngModel)]="id">
+        </div>
+  
+        <div class="form-group col-sm-12 notNullable">
+          <label for="photo">Zdjęcie</label>
+          <input type="text" class="form-control" id="photo" name="photo" placeholder="Zdjęcie" required [(ngModel)]="img">
+        </div>
+        
+        <div class="form-group col-sm-12">
+          <input type="submit" class="btn btn-sm btn-default" value="Dodaj" />
+        </div>
+         <div class="message col-sm-12 text-center" style="margin-top: 10px;"> {{ message }} </div>
+      
+      </form>
+    </div>
+  </div>
+</div>
