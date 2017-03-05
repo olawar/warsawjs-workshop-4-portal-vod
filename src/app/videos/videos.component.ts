@@ -14,8 +14,8 @@ export class VideosComponent implements OnInit {
   private query: string;
   private videos: VIDEO[];
   private categories: CATEGORY[];
+  private user: string;
 
-  private isLogged = false;
 
   constructor(private mediaService: MediaService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(
@@ -30,6 +30,11 @@ export class VideosComponent implements OnInit {
   ngOnInit() {
     this.getCategories();
     this.getVideos();
+    this.checkState();
+  }
+
+  private checkState() {
+    this.user = localStorage.getItem('user');
   }
 
   private getCategories(): void {

@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
           accounts.push(obj);
           localStorage.setItem('accounts', JSON.stringify(accounts));
 
-          this.message = 'Użytkownik został poprawnie zarejestrowany możesz się aktualnie zalogować do serwisu...';
+          this.message = 'Użytkownik został poprawnie zarejestrowany. Możesz się aktualnie zalogować do serwisu...';
         }
       }
       else {

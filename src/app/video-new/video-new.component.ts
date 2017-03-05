@@ -19,7 +19,8 @@ export class VideoNewComponent implements OnInit {
   private populary: number;
   private id: string;
   private img: string;
-
+  private message: string;
+  private addedVideo: any;
 
   constructor(private mediaService: MediaService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(
@@ -32,17 +33,25 @@ export class VideoNewComponent implements OnInit {
   }
 
   private addVideo(e) {
-    this.videos = this.mediaService.Videos();
     this.is_free = false;
     this.populary = 0;
-    //
-    // console.log('title', this.title, 'desc', this.desc, 'cat', this.cat, 'pay', this.is_free, 'populary', this.populary, 'id', this.id, 'img', this.img);
+    this.addedVideo = new VIDEO(this.title, this.desc, this.cat, this.is_free, this.populary, this.id, this.img);
+    this.sendVideo(this.addedVideo);
+    this.message = "Gratulacje, dodałeś swój film!";
 
-    let addedVideo = new VIDEO(this.title, this.desc, this.cat, this.is_free, this.populary, this.id, this.img);
-
-    this.videos.push(addedVideo);
+    setTimeout(()=> {
+      this.router.navigate(['/profile', this.id]);
+    }, 1500);
 
     return false;
+  }
+
+  public sendVideo(video): void {
+    this.videos = this.mediaService.Videos();
+    this.videos.push(video);
+    // localStorage.setItem('userVideos', JSON.stringify(this.videos));
+    // console.log(localStorage.getItem('user'));
+    // console.log(localStorage.getItem('userVideos'));
   }
 
   private getCategories(): void {
