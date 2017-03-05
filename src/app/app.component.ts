@@ -28,11 +28,13 @@ export class AppComponent implements OnInit {
 
   public login(){
     this.user = localStorage.getItem('user');
+    this.mediaService.checkState();
   }
 
   private logout(){
     localStorage.removeItem('user');
     this.user = null;
+    this.mediaService.checkState();
     this.router.navigate(['/start']);
   }
 

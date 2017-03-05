@@ -49,7 +49,7 @@ export class VideoNewComponent implements OnInit {
   public sendVideo(video): void {
     this.videos = this.mediaService.Videos();
     this.videos.push(video);
-    // localStorage.setItem('userVideos', JSON.stringify(this.videos));
+    localStorage.setItem('userVideos', JSON.stringify(this.videos));
     // console.log(localStorage.getItem('user'));
     // console.log(localStorage.getItem('userVideos'));
   }

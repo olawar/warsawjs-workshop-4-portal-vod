@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     let accounts = [];
     accounts = JSON.parse(localStorage.getItem('accounts'));
 
-    console.log(accounts);
+    // console.log(accounts);
 
 
     let exist: boolean = false;

@@ -4,10 +4,24 @@ import { VIDEO, CATEGORY } from './../models/index';
 @Injectable()
 export class MediaService {
 
-  constructor() { }
+  private user: string;
+  private userVideos: string;
+
+  constructor() {
+    this.checkState();
+  }
+
+  public checkState() {
+    this.user = localStorage.getItem('user');
+    this.userVideos = localStorage.getItem('userVideos');
+  }
 
   public Videos():VIDEO[]{
-    return VIDEOS;
+    if(this.user) {
+      return JSON.parse(localStorage.getItem('userVideos'));
+    } else {
+      return VIDEOS;
+    }
   }
 
   public Categories():CATEGORY[]{
@@ -37,3 +51,4 @@ var VIDEOS = [
   new VIDEO('ŚMIERTELNIE SEKSOWNA','Opowieść o dwóch niezbyt rozgarniętych facetach z prowincji: Franku - farciarzu uważającym się za mądrego i Edim - grabarzu który nie ma co do swojej inteligencji wątpliwości. Postanawiają odmienić swój los poprzez interesy z mafią. Niestety gdy wybucha ciężarówka z przewożoną kontrabanda mają poważne problemy, dlatego postanawiają wykopać zwłoki żony biznesmena na których powinien znajdować się wielce wartościowy naszyjnik.', 3, true, 0, '56mGJZm3VaU','http://1.fwcdn.pl/po/12/31/141231/7569594.6.jpg'),
   new VIDEO('DZIKI CEL','Brytyjsko-francuski komediodramat z 2010 roku. Maynard ma opinię perfekcyjnego zabójcy. Jednak kiedy poznaje piękną Rose, która ma stać się jego kolejnym celem, rutyna zostaje przerwana. Mężczyzna ulega jej urokowi i odstępuje od zamiaru jej zabicia. Niestety po piętach zaczyna deptać im Mike - ochroniarz Fergusona, człowieka który wydał wyrok na Rose.', 3, true, 0, 'o73ztPyJL-8', 'http://1.fwcdn.pl/po/33/35/483335/7533447.6.jpg'),
 ];
+
